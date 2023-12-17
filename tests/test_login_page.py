@@ -17,7 +17,7 @@ class TestLoginPage(unittest.TestCase):
     def tearDown(self):
         self.driver.quit()
 
-    def test_login_to_saucedemo(self):
+    def test_login_to_saucedemo_valid(self):
         # Arrange
         login_page = LoginPage(self.driver)
 
@@ -30,6 +30,18 @@ class TestLoginPage(unittest.TestCase):
         products_page = ProductsPage(self.driver)
         # # Assert
         self.assertTrue("Products" in products_page.products_title.text)
+
+    def test_login_to_saucedemo_invalid(self):
+        # Arrange
+        login_page = LoginPage(self.driver)
+
+        # Act
+        login_page.login(username="teste",password="teste")
+        
+        error_message = login_page.find_error_message()
+        
+        # # Assert
+        self.assertTrue("Username and password do not match any user in this service" in error_message.text)
 
 
 if __name__ == '__main__':
