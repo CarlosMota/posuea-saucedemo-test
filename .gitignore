@@ -39,3 +39,6 @@ env/
 # Arquivos de usuário
 *.orig
 *.rej
+
+# Arquivo de configuração
+config.json

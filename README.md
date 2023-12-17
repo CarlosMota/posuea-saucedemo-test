@@ -22,13 +22,26 @@ python -m venv venv
         source venv/bin/activate
         ```
 
-
 2. Instalação de Dependências:
 
     * Instale as dependências do projeto usando o seguinte comando:
 
     ```bash
-    pip install -r requirements.txt
+    python -m pip install -r requirements.txt
+    ```
+
+3. Configurações Sensíveis
+
+    As configurações sensíveis, como credenciais de login, não devem ser incluídas diretamente no repositório. Para isso crie um arquivo `config.json` não versionado conforme mostrado abaixo: 
+
+
+    ```json
+    {
+        "login_credentials": {
+            "username": "",
+            "password": ""
+        }
+    }
     ```
 
 ## Estrutura do projeto
