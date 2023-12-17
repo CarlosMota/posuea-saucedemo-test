@@ -21,11 +21,8 @@ class TestLoginPage(unittest.TestCase):
         # Arrange
         login_page = LoginPage(self.driver)
 
-        #credentials
-        credentials = login_page.load_credentials()
-
         # Act
-        login_page.login(username=credentials["username"],password=credentials["password"])
+        login_page.do_login()
         
         products_page = ProductsPage(self.driver)
         # # Assert

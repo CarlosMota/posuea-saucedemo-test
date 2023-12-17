@@ -24,6 +24,14 @@ class LoginPage:
         print(credentials["username"])
         return {"username":credentials["username"], "password":credentials["password"]}
     
+    def do_login(self):
+        credentials = self.load_credentials()
+
+        self.login(username=credentials["username"],password=credentials["password"])
+
+        time.sleep(2)
+
+    
     def find_error_message(self):
         return self.driver.find_element(By.XPATH,'//div[@class="error-message-container error"]/h3')
     
