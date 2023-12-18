@@ -1,4 +1,5 @@
 # test_login_page.py
+from turtle import title
 import unittest
 from selenium.webdriver import Chrome
 from selenium.webdriver.common.by import By
@@ -25,8 +26,11 @@ class TestLoginPage(unittest.TestCase):
         login_page.do_login()
         
         products_page = ProductsPage(self.driver)
+
+        title = products_page.get_product_page_title()
+
         # # Assert
-        self.assertTrue("Products" in products_page.products_title.text)
+        self.assertTrue("Products" in title.text)
 
     def test_login_to_saucedemo_invalid(self):
         # Arrange

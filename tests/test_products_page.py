@@ -13,7 +13,7 @@ class TestProductsPage(unittest.TestCase):
         self.driver.get("https://www.saucedemo.com/")
         self.driver.maximize_window()
         self.login_page = LoginPage(self.driver)
-        
+        self.products_page = ProductsPage(self.driver)
 
     def tearDown(self):
         print("product page tear down")
@@ -24,11 +24,44 @@ class TestProductsPage(unittest.TestCase):
         
         self.login_page.do_login()
 
-        products_page = ProductsPage(self.driver)
-
-        cart = products_page.add_first_product_to_cart()
+        cart = self.products_page.add_first_product_to_cart()
 
         self.assertTrue(cart.text == "1")
+
+    def test_sort_product_to_az(self):
+
+        self.login_page.do_login()
+
+        first_product = self.products_page.sort_products_to_az()
+
+        self.assertTrue(first_product == "Sauce Labs Backpack")
+
+    def test_sort_product_to_za(self):
+
+        self.login_page.do_login()
+
+        first_product = self.products_page.sort_products_to_za()
+
+        self.assertTrue(first_product == "Test.allTheThings() T-Shirt (Red)")
+
+
+    def test_sort_product_to_low_to_high(self):
+
+        self.login_page.do_login()
+
+        first_product = self.products_page.sort_products_to_low_to_high()
+
+        self.assertTrue(first_product == "Sauce Labs Onesie")
+
+    def test_sort_product_to_high_to_low(self):
+
+        self.login_page.do_login()
+
+        first_product = self.products_page.sort_products_to_high_to_low()
+
+        self.assertTrue(first_product == "Sauce Labs Fleece Jacket")
+
+        
 
 
 if __name__ == '__main__':
