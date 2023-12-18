@@ -51,9 +51,12 @@ O projeto utiliza o padrão POM (Page Object Model) para facilitar a organizaç�
 ```plaintext
 posuea-saucedemo-test/
 |-- pages/
+| |-- cart_page.py
 | |-- login_page.py
+| |-- products_page.py
 |-- tests/
 | |-- test_login_page.py
+| |-- test_products_page.py
 |-- requirements.txt
 |-- .gitignore
 |-- README.md

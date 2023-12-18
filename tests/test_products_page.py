@@ -7,6 +7,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from pages.login_page import LoginPage
 from pages.products_page import ProductsPage
 from pages.cart_page import CartPage
+from pages.products_detail_page import ProductsDetailPage
+
 
 class TestProductsPage(unittest.TestCase):
     def setUp(self):
@@ -16,6 +18,7 @@ class TestProductsPage(unittest.TestCase):
         self.login_page = LoginPage(self.driver)
         self.products_page = ProductsPage(self.driver)
         self.cart_page = CartPage(self.driver)
+        self.product_detail_page = ProductsDetailPage(self.driver)
 
     def tearDown(self):
         print("product page tear down")
@@ -63,7 +66,7 @@ class TestProductsPage(unittest.TestCase):
 
         self.assertTrue(first_product == "Sauce Labs Fleece Jacket")
 
-    def test_navigate_from_products_to_checkout(self):
+    def test_navigate_from_products_to_cart(self):
 
         self.login_page.do_login()
 
@@ -71,11 +74,19 @@ class TestProductsPage(unittest.TestCase):
 
         cart.click()
 
-        checkout_button = self.cart_page.get_cart_title()
+        cart_button = self.cart_page.get_cart_title()
 
-        self.assertTrue(checkout_button.text == 'Your Cart')
+        self.assertTrue(cart_button.text == 'Your Cart')
 
+    def test_navigate_from_products_to_product_details(self):
+
+        self.login_page.do_login()
+
+        self.products_page.select_first_item_to_see_detail()
+
+        detail = self.product_detail_page.get_product_page_title()
         
+        self.assertTrue(detail.text == 'Back to products')            
 
 if __name__ == '__main__':
     unittest.main()

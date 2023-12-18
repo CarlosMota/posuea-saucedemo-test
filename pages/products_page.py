@@ -23,8 +23,6 @@ class ProductsPage:
         add_to_cart_button = self.driver.find_element(By.XPATH, f"//div[text()='{product_name}']/ancestor::div[@class='inventory_item']//button")
         add_to_cart_button.click()
 
-        time.sleep(3)
-
         return self.driver.find_element(By.XPATH, "//span[@class='shopping_cart_badge']")
 
     def sort_products_to_az(self):
@@ -35,8 +33,6 @@ class ProductsPage:
         option = self.driver.find_element(By.XPATH,"//select[@class='product_sort_container']//option[@value='az']")
         
         option.click()
-
-        time.sleep(5)
 
         return self.get_first_product_name()
     
@@ -49,8 +45,6 @@ class ProductsPage:
         
         option.click()
 
-        time.sleep(3)
-
         return self.get_first_product_name()
 
     def sort_products_to_low_to_high(self):
@@ -61,8 +55,6 @@ class ProductsPage:
         option = self.driver.find_element(By.XPATH,"//select[@class='product_sort_container']//option[@value='lohi']")
         
         option.click()
-
-        time.sleep(3)
 
         return self.get_first_product_name()
     
@@ -75,7 +67,12 @@ class ProductsPage:
         
         option.click()
 
-        time.sleep(3)
-
         return self.get_first_product_name()
         
+    def select_first_item_to_see_detail(self):
+
+        product_name = self.get_first_product_name()
+
+        img = self.driver.find_element(By.XPATH, f"//img[@alt='{product_name}']")
+
+        img.click()
