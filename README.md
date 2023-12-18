@@ -66,3 +66,23 @@ posuea-saucedemo-test/
 `requirements.txt:` Lista as dependências do projeto.
 
 `.gitignore:` Define os arquivos/diretórios a serem ignorados pelo Git.
+
+## Executar os testes
+
+1. Para executar todos os testes
+
+    ```bash
+    python -m pytest tests/
+    ```
+
+2. Para executar testes de uma página
+
+    ```bash
+    python -m pytest tests/nome_do_arquivo_da_página.py
+    ```
+
+    Exemplo:
+
+    ```bash
+    python -m pytest tests/test_products_page.py
+    ```
