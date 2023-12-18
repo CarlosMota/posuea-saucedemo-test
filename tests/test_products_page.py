@@ -6,7 +6,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from pages.login_page import LoginPage
 from pages.products_page import ProductsPage
-from pages.checkout_page import CkeckoutPage
+from pages.cart_page import CartPage
 
 class TestProductsPage(unittest.TestCase):
     def setUp(self):
@@ -15,7 +15,7 @@ class TestProductsPage(unittest.TestCase):
         self.driver.maximize_window()
         self.login_page = LoginPage(self.driver)
         self.products_page = ProductsPage(self.driver)
-        self.checkout_page = CkeckoutPage(self.driver)
+        self.cart_page = CartPage(self.driver)
 
     def tearDown(self):
         print("product page tear down")
@@ -71,9 +71,9 @@ class TestProductsPage(unittest.TestCase):
 
         cart.click()
 
-        checkout_button = self.checkout_page.get_checkout_button()
+        checkout_button = self.cart_page.get_cart_title()
 
-        self.assertTrue(checkout_button.text == 'Checkout')
+        self.assertTrue(checkout_button.text == 'Your Cart')
 
         
 
