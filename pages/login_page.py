@@ -35,3 +35,7 @@ class LoginPage:
     def find_error_message(self):
         return self.driver.find_element(By.XPATH,'//div[@class="error-message-container error"]/h3')
     
+    def find_login_title(self):
+        print("Encontrar titulo do login")
+        return self.driver.find_element(By.XPATH,'//div[@class="login_logo"]')
+    

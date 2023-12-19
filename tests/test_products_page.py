@@ -86,7 +86,19 @@ class TestProductsPage(unittest.TestCase):
 
         detail = self.product_detail_page.get_product_page_title()
         
-        self.assertTrue(detail.text == 'Back to products')            
+        self.assertTrue(detail.text == 'Back to products')
+
+    def test_logout(self):
+
+        self.login_page.do_login()
+
+        self.products_page.logout()
+
+        title = self.login_page.find_login_title()
+
+        print("titulo do login encontrado")
+
+        self.assertTrue(title.text == 'Swag Labs')            
 
 if __name__ == '__main__':
     unittest.main()

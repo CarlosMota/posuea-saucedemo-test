@@ -1,5 +1,6 @@
 from tkinter import Button
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 
@@ -76,3 +77,19 @@ class ProductsPage:
         img = self.driver.find_element(By.XPATH, f"//img[@alt='{product_name}']")
 
         img.click()
+
+    def select_product_menu(self):
+        return self.driver.find_element(By.XPATH, f"//div[@class='bm-burger-button']/button")
+
+    def logout(self):
+
+        button = self.select_product_menu()
+
+        button.click()
+
+        wait = WebDriverWait(self.driver, 10)
+        logout_link = wait.until(EC.element_to_be_clickable((By.ID, "logout_sidebar_link")))
+
+        logout_link.click()
+
+    
