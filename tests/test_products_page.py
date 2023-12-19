@@ -8,6 +8,7 @@ from pages.login_page import LoginPage
 from pages.products_page import ProductsPage
 from pages.cart_page import CartPage
 from pages.products_detail_page import ProductsDetailPage
+from pages.about_page import AboutPage
 
 
 class TestProductsPage(unittest.TestCase):
@@ -19,74 +20,75 @@ class TestProductsPage(unittest.TestCase):
         self.products_page = ProductsPage(self.driver)
         self.cart_page = CartPage(self.driver)
         self.product_detail_page = ProductsDetailPage(self.driver)
+        self.about_page = AboutPage(self.driver)
 
     def tearDown(self):
         print("product page tear down")
         self.driver.quit()
 
     
-    # def test_add_product_to_cart(self):
+    def test_add_product_to_cart(self):
         
-    #     self.login_page.do_login()
+        self.login_page.do_login()
 
-    #     cart = self.products_page.add_first_product_to_cart()
+        cart = self.products_page.add_first_product_to_cart()
 
-    #     self.assertTrue(cart.text == "1")
+        self.assertTrue(cart.text == "1")
 
-    # def test_sort_product_to_az(self):
+    def test_sort_product_to_az(self):
 
-    #     self.login_page.do_login()
+        self.login_page.do_login()
 
-    #     first_product = self.products_page.sort_products_to_az()
+        first_product = self.products_page.sort_products_to_az()
 
-    #     self.assertTrue(first_product == "Sauce Labs Backpack")
+        self.assertTrue(first_product == "Sauce Labs Backpack")
 
-    # def test_sort_product_to_za(self):
+    def test_sort_product_to_za(self):
 
-    #     self.login_page.do_login()
+        self.login_page.do_login()
 
-    #     first_product = self.products_page.sort_products_to_za()
+        first_product = self.products_page.sort_products_to_za()
 
-    #     self.assertTrue(first_product == "Test.allTheThings() T-Shirt (Red)")
+        self.assertTrue(first_product == "Test.allTheThings() T-Shirt (Red)")
 
 
-    # def test_sort_product_to_low_to_high(self):
+    def test_sort_product_to_low_to_high(self):
 
-    #     self.login_page.do_login()
+        self.login_page.do_login()
 
-    #     first_product = self.products_page.sort_products_to_low_to_high()
+        first_product = self.products_page.sort_products_to_low_to_high()
 
-    #     self.assertTrue(first_product == "Sauce Labs Onesie")
+        self.assertTrue(first_product == "Sauce Labs Onesie")
 
-    # def test_sort_product_to_high_to_low(self):
+    def test_sort_product_to_high_to_low(self):
 
-    #     self.login_page.do_login()
+        self.login_page.do_login()
 
-    #     first_product = self.products_page.sort_products_to_high_to_low()
+        first_product = self.products_page.sort_products_to_high_to_low()
 
-    #     self.assertTrue(first_product == "Sauce Labs Fleece Jacket")
+        self.assertTrue(first_product == "Sauce Labs Fleece Jacket")
 
-    # def test_navigate_from_products_to_cart(self):
+    def test_navigate_from_products_to_cart(self):
 
-    #     self.login_page.do_login()
+        self.login_page.do_login()
 
-    #     cart = self.products_page.add_first_product_to_cart()
+        cart = self.products_page.add_first_product_to_cart()
 
-    #     cart.click()
+        cart.click()
 
-    #     cart_button = self.cart_page.get_cart_title()
+        cart_button = self.cart_page.get_cart_title()
 
-    #     self.assertTrue(cart_button.text == 'Your Cart')
+        self.assertTrue(cart_button.text == 'Your Cart')
 
-    # def test_navigate_from_products_to_product_details(self):
+    def test_navigate_from_products_to_product_details(self):
 
-    #     self.login_page.do_login()
+        self.login_page.do_login()
 
-    #     self.products_page.select_first_item_to_see_detail()
+        self.products_page.select_first_item_to_see_detail()
 
-    #     detail = self.product_detail_page.get_product_page_title()
+        detail = self.product_detail_page.get_product_page_title()
         
-    #     self.assertTrue(detail.text == 'Back to products')
+        self.assertTrue(detail.text == 'Back to products')
 
     def test_menu(self):
         self.login_page.do_login()
@@ -105,10 +107,18 @@ class TestProductsPage(unittest.TestCase):
         self.products_page.logout()
 
         title = self.login_page.find_login_title()
+        
+        self.assertTrue(title.text == 'Swag Labs')
 
-        print("titulo do login encontrado")
+    def test_about(self):
 
-        self.assertTrue(title.text == 'Swag Labs')            
+        self.login_page.do_login()
+
+        self.products_page.about()
+
+        about = self.about_page.get_about_text()
+
+        self.assertTrue(about.text == 'The Sauce Test Toolchain')
 
 if __name__ == '__main__':
     unittest.main()

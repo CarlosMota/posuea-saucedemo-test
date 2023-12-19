@@ -108,4 +108,15 @@ class ProductsPage:
 
         logout_link.click()
 
+    def about(self):
+
+        button = self.select_product_menu()
+
+        button.click()
+
+        wait = WebDriverWait(self.driver, 10)
+        about_link = wait.until(EC.element_to_be_clickable((By.ID, "about_sidebar_link")))
+
+        about_link.click()
+
     
