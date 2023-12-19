@@ -81,6 +81,22 @@ class ProductsPage:
     def select_product_menu(self):
         return self.driver.find_element(By.XPATH, f"//div[@class='bm-burger-button']/button")
 
+    def menu(self):
+
+        button = self.select_product_menu()
+
+        button.click()
+
+        logout_link = self.driver.find_element(By.ID, "logout_sidebar_link")
+        all_items_link = self.driver.find_element(By.ID, "inventory_sidebar_link")
+        about_link = self.driver.find_element(By.ID, "about_sidebar_link")
+        reset_link = self.driver.find_element(By.ID, "reset_sidebar_link")
+
+        time.sleep(3)
+
+        return {"all_items":all_items_link,"logout":logout_link,"about":about_link,"reset":reset_link}
+
+        
     def logout(self):
 
         button = self.select_product_menu()
