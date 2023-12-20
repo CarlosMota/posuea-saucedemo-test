@@ -153,7 +153,16 @@ class TestProductsPage(unittest.TestCase):
 
         self.assertTrue("LinkedIn" in title)
 
+    def test_Add_And_Remove_Item(self):
+        self.login_page.do_login()
+        
+        cart = self.products_page.add_first_product_to_cart()
 
+        self.assertTrue(cart.text == "1")
+
+        cart = self.products_page.remove_first_product_from_cart()
+
+        self.assertTrue(cart.text == '')
 
 if __name__ == '__main__':
     unittest.main()

@@ -118,4 +118,15 @@ class ProductsPage:
 
         about_link.click()
 
+    def remove_first_product_from_cart(self):
+        
+        product_name = self.get_first_product_name()
+        
+        add_to_cart_button = self.driver.find_element(By.XPATH, f"//div[text()='{product_name}']/ancestor::div[@class='inventory_item']//button")
+        
+        add_to_cart_button.click()
+
+        return self.driver.find_element(By.XPATH, "//a[@class='shopping_cart_link']")
+
+
     
