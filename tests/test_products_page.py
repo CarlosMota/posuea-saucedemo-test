@@ -1,5 +1,6 @@
 from ast import Assert
 import unittest
+from pages.footer_page import FooterPage
 from selenium.webdriver import Chrome
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -21,6 +22,7 @@ class TestProductsPage(unittest.TestCase):
         self.cart_page = CartPage(self.driver)
         self.product_detail_page = ProductsDetailPage(self.driver)
         self.about_page = AboutPage(self.driver)
+        self.footer_page = FooterPage(self.driver)
 
     def tearDown(self):
         print("product page tear down")
@@ -50,7 +52,6 @@ class TestProductsPage(unittest.TestCase):
         first_product = self.products_page.sort_products_to_za()
 
         self.assertTrue(first_product == "Test.allTheThings() T-Shirt (Red)")
-
 
     def test_sort_product_to_low_to_high(self):
 
@@ -119,6 +120,16 @@ class TestProductsPage(unittest.TestCase):
         about = self.about_page.get_about_text()
 
         self.assertTrue(about.text == 'The Sauce Test Toolchain')
+
+    def test_twitter_button(self):
+
+        self.login_page.do_login()
+        
+        self.footer_page.navigate_to_twitter()
+
+        title = self.footer_page.get_twitter_link()
+
+        self.assertTrue("Sauce Labs (@saucelabs) / X" == title)
 
 if __name__ == '__main__':
     unittest.main()
