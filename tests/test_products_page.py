@@ -164,5 +164,14 @@ class TestProductsPage(unittest.TestCase):
 
         self.assertTrue(cart.text == '')
 
+    def test_all_items(self):
+
+        self.login_page.do_login()
+        
+        isHidden = self.products_page.click_all_items()
+
+        self.assertTrue(isHidden == False)
+
+
 if __name__ == '__main__':
     unittest.main()

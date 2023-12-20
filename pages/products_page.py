@@ -127,6 +127,16 @@ class ProductsPage:
         add_to_cart_button.click()
 
         return self.driver.find_element(By.XPATH, "//a[@class='shopping_cart_link']")
+    
+    def click_all_items(self):
+        
+        items = self.menu()
+
+        items['all_items'].click()
+
+        menu_container = self.driver.find_element(By.CLASS_NAME,"bm-menu-wrap")
+
+        return menu_container.is_displayed()
 
 
     
