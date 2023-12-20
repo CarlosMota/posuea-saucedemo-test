@@ -14,7 +14,7 @@ python -m venv venv
     * Ative no Windows
 
         ```bash
-        venv\Scripts\activate
+       source venv\Scripts\activate
         ```
 
     * Ative no Linux/Mac
