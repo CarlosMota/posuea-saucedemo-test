@@ -20,23 +20,17 @@ class FooterPage:
         link = self.driver.find_element(By.XPATH,"//li[contains(@class,'social_linkedin')]/a")
         link.click()
 
-    def get_twitter_link(self):
+    def get_title(self):
         time.sleep(3)
-
-        print('Preparar pra abrir a aba do twitter')
-
+        
         WebDriverWait(self.driver, 10).until(EC.number_of_windows_to_be(2))
-
-        print('aguarda a abertura da outra aba')
         
         all_handles = self.driver.window_handles
 
-        print('alterna a aba')
-
         self.driver.switch_to.window(all_handles[1])
-
-        print('procurar titulo')
 
         title = self.driver.title
         
         return title
+    
+    

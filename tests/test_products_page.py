@@ -127,9 +127,33 @@ class TestProductsPage(unittest.TestCase):
         
         self.footer_page.navigate_to_twitter()
 
-        title = self.footer_page.get_twitter_link()
+        title = self.footer_page.get_title()
 
         self.assertTrue("Sauce Labs (@saucelabs) / X" == title)
+
+    def test_facebook_button(self):
+
+        self.login_page.do_login()
+        
+        self.footer_page.navigate_to_facebook()
+
+        title = self.footer_page.get_title()
+
+        self.assertTrue("Sauce Labs" in title and "Facebook" in title)
+
+    def test_linkedin_button(self):
+
+        self.login_page.do_login()
+        
+        self.footer_page.navigate_to_linkedin()
+
+        title = self.footer_page.get_title()
+
+        print(title)
+
+        self.assertTrue("LinkedIn" in title)
+
+
 
 if __name__ == '__main__':
     unittest.main()
