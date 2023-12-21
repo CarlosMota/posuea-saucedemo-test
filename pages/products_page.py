@@ -26,7 +26,7 @@ class ProductsPage:
         go_to_checkout_button = self.driver.find_element(By.CLASS_NAME, "shopping_cart_link")
         go_to_checkout_button.click()
 
-        time.sleep(3)
+        time.sleep(4)
 
     def sort_products_to_az(self):
         select_element = self.driver.find_element(By.XPATH, "//select[@class='product_sort_container']")

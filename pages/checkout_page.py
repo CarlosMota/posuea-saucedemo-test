@@ -92,5 +92,3 @@ class CheckoutPage:
             EC.element_to_be_clickable((By.ID, 'cancel'))
         )
         return_home_button.click()
-    
-    #time.sleep(4)

@@ -1,6 +1,5 @@
 import unittest
 from selenium.webdriver import Chrome
-
 from pages.checkout_page import CheckoutPage
 from pages.about_page import AboutPage
 from pages.cart_page import CartPage
