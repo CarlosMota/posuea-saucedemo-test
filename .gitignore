@@ -41,4 +41,4 @@ env/
 *.rej
 
 # Arquivo de configuração
-config.json
+#config.json
